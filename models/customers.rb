@@ -12,14 +12,30 @@ class Customer
   end
 
   def save()
-    sql = "INSERT INTO customers (name, funds) VALUES ('#{ @name }', '#{ @funds }') RETURNING id"
+    sql = "INSERT INTO customers (name, funds) VALUES ('#{ @name }', #{ @funds }) RETURNING id"
     location = SqlRunner.run( sql ).first
     @id = location['id'].to_i
   end
 
-  def self.delete_all() 
-    sql = "DELETE FROM customers"
-    SqlRunner.run(sql)
+  def update
+    updating = 
+    "UPDATE customers
+    SET (name, funds) =
+    ('#{@name}', #{@funds})
+    WHERE id = #{@id};"
+    SqlRunner.run ( updating )
+  end
+
+  def self.all()
+    sql = "SELECT * FROM customers"
+    customers = SqlRunner.run(sql)
+    result = customers.map { |customer| Customer.new( customer ) }
+    return result
+  end
+
+  def self.delete_all
+    deleting = "DELETE FROM customers;"
+    SqlRunner.run ( deleting )  
   end
 
 end
