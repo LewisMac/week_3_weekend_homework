@@ -5,8 +5,8 @@ require_relative( 'models/tickets' )
 require( 'pry-byebug' )
 
 Customer.delete_all()
-# Film.delete_all()
-# Ticket.delete_all()
+Film.delete_all()
+Ticket.delete_all()
 
 customer1 = Customer.new({
   'name' => 'Spock',
@@ -26,6 +26,12 @@ film1 = Film.new({
   'price' => 20
   })
 film1.save
+
+ticket1 = Ticket.new({
+  'customer_id' => customer1.id,
+  'film_id' => film1.id
+  })
+ticket1.save()
 
 
 
