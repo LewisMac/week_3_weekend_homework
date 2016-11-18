@@ -17,12 +17,17 @@ customer1.save
 
 customer2 = Customer.new({
   'name' => 'Kirk',
-  'funds' => 4
+  'funds' => 40
   })
 customer2.save
 
-customer1.funds = 20
-customer1.update
+film1 = Film.new({
+  'title' => 'Star Wars',
+  'price' => 20
+  })
+film1.save
+
+
 
 
 
