@@ -17,7 +17,7 @@ class Film
     @id = film['id'].to_i
   end
 
-  def update
+  def update()
     updating = 
     "UPDATE films
     SET (title, price) =

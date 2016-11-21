@@ -15,6 +15,7 @@ customer1 = Customer.new({
 customer1.save
 
 
+
 customer2 = Customer.new({
   'name' => 'Kirk',
   'funds' => 40
@@ -32,6 +33,8 @@ ticket1 = Ticket.new({
   'film_id' => film1.id
   })
 ticket1.save()
+
+
 
 
 

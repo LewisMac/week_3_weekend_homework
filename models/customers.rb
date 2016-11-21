@@ -17,14 +17,19 @@ class Customer
     @id = customer['id'].to_i
   end
 
-  def update
+  def update(new_funds = @funds)
     updating = 
     "UPDATE customers
     SET (name, funds) =
-    ('#{@name}', #{@funds})
+    ('#{@name}', #{new_funds})
     WHERE id = #{@id};"
     SqlRunner.run ( updating )
   end
+
+  # def update_funds(new_funds)
+  #   @funds = new_funds
+    
+  # end
 
   def self.all()
     sql = "SELECT * FROM customers"
